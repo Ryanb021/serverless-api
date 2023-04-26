@@ -39,6 +39,7 @@ Work in a non-main branch in a new repository called 'serverless-api'. While you
 
 ## UML
 
+![Serverless API UML](https://user-images.githubusercontent.com/120413183/234724185-fadd8e00-0528-4ed1-9d1b-eeb9f4778205.png)
 
 ## Link
 

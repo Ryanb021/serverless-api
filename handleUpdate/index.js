@@ -1,6 +1,6 @@
 const dynamoose = require('dynamoose');
 
-const schema = new daynamoose.Schema({
+const schema = new dynamoose.Schema({
   "id": String,
   "name" : String,
   "age": String,

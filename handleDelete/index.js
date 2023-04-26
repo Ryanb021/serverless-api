@@ -1,26 +1,35 @@
 const dynamoose = require('dynamoose');
 
-const schema = new dynamoose.Schema({
-  "id": String,
-  "name": String,
-  "age": String,
-  "height": String
+const personSchema = new dynamoose.Schema({
+  id: {
+    type: String
+  },
+  name: String,
+  age: String,
+  height: String,
 });
 
-const peopleModel = dynamoose.model('People', schema);
+const PersonModel = dynamoose.model('People', personSchema);
 
-exports.handler = async(event) => {
-  let id = event?.pathParameters?.id
+exports.handler = async (event) => {
+  console.log('DELETE person EVENT OBJECT: ', event);
 
-  const response = {statusCode: null, body: null};
-  try{
-    await peopleModel.delete(id);
-    response.statusCode = 200;
-  } catch (e){
+  let parameters = event.pathParameters;
+  let responseBody = null;
 
-    console.log(e.message)
-    response.statusCode = 500;
+  if (event.httpMethod === 'DELETE' && parameters && parameters['id']) {
+    console.log('DELETE REQUEST PATH PARAMS: ', parameters);
+    await PersonModel.delete(parameters['id']);
+    responseBody = { message: 'Item deleted successfully' };
+  } else {
+    responseBody = await PersonModel.scan().exec();
   }
 
+  console.log('PERSONS FROM OUR TABLE: ', responseBody);
+
+  const response = {
+    statusCode: 200,
+    body: JSON.stringify(responseBody),
+  };
   return response;
 };

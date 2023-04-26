@@ -17,7 +17,7 @@ exports.handler = async(event) => {
 
   let parsedBody = JSON.parse(event.body);
 
-  let updateName = parsedBody.name;
+  let updatedName = parsedBody.name;
 
   const response = {statusCode: null, body: null};
 

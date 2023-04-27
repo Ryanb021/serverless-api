@@ -43,6 +43,8 @@ Work in a non-main branch in a new repository called 'serverless-api'. While you
 
 ## Link
 
+### Repo Codes
 - https://github.com/Ryanb021/serverless-api
 
+### API Link
 - https://ywra5giyi8.execute-api.us-west-2.amazonaws.com/Lab18/people
